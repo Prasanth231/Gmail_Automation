@@ -84,7 +84,7 @@ message = f"Subject: {subject}\n\n{body}"
 smtp_server = smtplib.SMTP(smtp_server, smtp_port)
 smtp_server.starttls()
 smtp_server.login(username, password)
-smtp_server.sendmail(smtp_username, gmail, message)
+smtp_server.sendmail(username, gmail, message)
 print("mail sented ")
 #mycursor.execute("TRUNCATE TABLE mail")
 #################################################################################################################################
