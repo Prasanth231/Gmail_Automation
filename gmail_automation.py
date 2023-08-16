@@ -1,3 +1,4 @@
+#################################################################################################################################
 import os
 from imbox import Imbox # pip install imbox
 import traceback
@@ -5,13 +6,16 @@ import PyPDF2
 import re
 import mysql.connector
 import smtplib
+#################################################################################################################################
+#Host mail id to Check received mails
 host = "imap.gmail.com"
 username = "highflyer.2312@gmail.com"
-password = 'xzvjxflrqvylitsb'
-download_folder = 'F:\\rasa\\data_extract\\google\\projects\\resume and gmail automation'
-    
+password = 'xdsdfsdfsfsitsb'
+download_folder = 'PATH//TO//THE//FILE'
+#################################################################################################################################
+#Login using Imbox and also connect to the mysql database to store the scraped mailID
 mail = Imbox(host, username=username, password=password, ssl=True, ssl_context=None, starttls=False)
-messages = mail.messages(sent_from='prasanth19121998@gmail.com') # defaults to inbox
+messages = mail.messages(sent_from='abc@gmail.com') 
 try:
     mydb = mysql.connector.connect(
     host="localhost",
@@ -21,7 +25,7 @@ try:
 except error as e:
     print("error")   
 mycursor = mydb.cursor()
-
+#################################################################################################################################
 if not os.path.isdir(download_folder):
     os.makedirs(download_folder, exist_ok=True)
  
@@ -69,21 +73,22 @@ for (uid, message) in messages:
                 fp.write(attachment.get('content').read())
         except:
             print(" ")
+#################################################################################################################################
+#Send the Registered subject to the scrape mail id
 #emails = mycursor.fetchall()
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
-smtp_username = "highflyer.2312@gmail.com"
-smtp_password = "xzvjxflrqvylitsb"
-
 subject = "Test Mail"
 body = "This is a test email."
 message = f"Subject: {subject}\n\n{body}"
 smtp_server = smtplib.SMTP(smtp_server, smtp_port)
 smtp_server.starttls()
-smtp_server.login(smtp_username, smtp_password)
+smtp_server.login(username, password)
 smtp_server.sendmail(smtp_username, gmail, message)
 print("mail sented ")
 #mycursor.execute("TRUNCATE TABLE mail")
+#################################################################################################################################
+#close all the connections
 mail.logout()
 mydb.commit()
 mydb.close()
