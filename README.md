@@ -1,8 +1,8 @@
 
 # Gmail Automation
-It mainly usefull for the HR when they recieve an set of Resumes in mail it will read the file then scrape the EmailID from each of the file and store it in the mysql database. Then it will send an registerd messages to the scraped mailid.     
-By Using **Imbox** package it can access the recieved mails and can download the file.     
-Then by using **PyPDF2** to scrape the EmailId from the received set of PDF and store it the mySql database. Atlast by using the **Smtplib** it send the Registered Messages to the particular Scarped mailId's.
+It is mainly useful for HR when they receive a set of Resumes in the mail it will read the file then scrape the Email ID from each of the files and store it in the MySQL database. Then it will send registered messages to the scraped mailed.     
+By using the **Imbox** package it can access the received mail and can download the file.     
+Then use **PyPDF2** to scrape the EmailId from the received set of PDFs and store it in the MySQL database. At last by using the **Smtplib** it sends the Registered Messages to the particular Scarped mailId's.
  
 
 ## Installation
@@ -46,5 +46,6 @@ Then Run the project by using
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Gmailautomation](https://github.com/Prasanth231/Gmail_Automation/assets/128634760/693b89c4-65d3-486d-b36f-eafbc0dfa961)
+
 
